@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Support Attendance</string>
+    <string name="Android">Android</string>
+    <string name="Game">Game</string>
+    <string name="Network">Network</string>
+    <string name="CyberSecurity">Cyber security</string>
+
+</resources>

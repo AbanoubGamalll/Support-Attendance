@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.supportattendance">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/support_logo"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/support_logo"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SupportAttendance">
+        <activity
+            android:name=".Pages.AddDate"
+            android:exported="false"
+            android:label="Add New Session" />
+        <activity
+            android:name=".Pages.AttendanceActivity"
+            android:exported="false"
+            android:label="Attendance" />
+        <activity
+            android:name=".Pages.Days"
+            android:exported="false"
+            android:label="Days Of Sessions" />
+        <activity
+            android:name=".Pages.Community"
+            android:exported="false"
+            android:label="Choose Your Community :" />
+        <activity
+            android:name=".Pages.SplashScreen"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
