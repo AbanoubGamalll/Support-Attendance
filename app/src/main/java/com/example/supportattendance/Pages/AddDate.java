@@ -60,6 +60,5 @@ public class AddDate extends AppCompatActivity implements OnClickNamesRecyclerVi
     public void Done(View view) {
         Intent intent = new Intent(this, Community.class);
         startActivity(intent);
-
     }
 }

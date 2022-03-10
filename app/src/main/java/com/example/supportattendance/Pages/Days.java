@@ -138,6 +138,7 @@ public class Days extends AppCompatActivity implements OnClickDaysRecyclerView {
                             } catch (Exception e) {
                                 Toast.makeText(Days.this, "Name Already Exist", Toast.LENGTH_SHORT).show();
                             }
+                            AddOrDeleteName(val);
                         } else {
                             Toast.makeText(Days.this, "Add Name!", Toast.LENGTH_SHORT).show();
                         }
