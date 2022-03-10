@@ -1,5 +1,6 @@
 package com.example.supportattendance.RecyclerView.RecyclerViewNames;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,8 +9,10 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.supportattendance.Common;
 import com.example.supportattendance.R;
 import com.example.supportattendance.RecyclerView.Attendance.OnClickNamesRecyclerView;
 import com.example.supportattendance.RecyclerView.RecyclerViewDays.OnClickDaysRecyclerView;
@@ -19,6 +22,7 @@ import java.util.List;
 public class NamesAdapter extends RecyclerView.Adapter<NamesAdapter.ViewHolder> {
     private List<NamesModel> list;
     private OnClickNamesRecyclerView clickRecyclerView;
+    private float delay = 0;
 
     public NamesAdapter(List<NamesModel> list, OnClickNamesRecyclerView clickRecyclerView) {
         this.list = list;
@@ -42,6 +46,8 @@ public class NamesAdapter extends RecyclerView.Adapter<NamesAdapter.ViewHolder> 
                 holder.onClickRecyclerView.onclick(holder.getAdapterPosition(), holder.checkBox.isChecked());
             }
         });
+        Common.AnimationOnStart(holder.cardView, (float) (delay));
+        delay += 0.1;
     }
 
     @Override
@@ -53,12 +59,14 @@ public class NamesAdapter extends RecyclerView.Adapter<NamesAdapter.ViewHolder> 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView name;
         CheckBox checkBox;
+        CardView cardView;
         OnClickNamesRecyclerView onClickRecyclerView;
 
         public ViewHolder(@NonNull View itemView, OnClickNamesRecyclerView onClickRecyclerView) {
             super(itemView);
             name = itemView.findViewById(R.id.txtName);
             checkBox = itemView.findViewById(R.id.checkBox);
+            cardView = itemView.findViewById(R.id.cardViewAttendance);
 
             this.onClickRecyclerView = onClickRecyclerView;
 
@@ -69,4 +77,5 @@ public class NamesAdapter extends RecyclerView.Adapter<NamesAdapter.ViewHolder> 
             onClickRecyclerView.onclick(getAdapterPosition(), checkBox.isChecked());
         }
     }
+
 }

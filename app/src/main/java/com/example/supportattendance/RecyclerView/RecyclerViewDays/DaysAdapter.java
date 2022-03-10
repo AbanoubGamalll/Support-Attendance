@@ -1,13 +1,16 @@
 package com.example.supportattendance.RecyclerView.RecyclerViewDays;
 
+import android.animation.ObjectAnimator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.supportattendance.Common;
 import com.example.supportattendance.R;
 
 import java.util.List;
@@ -16,6 +19,7 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.ViewHolder> {
 
     private List<DaysModel> list;
     private OnClickDaysRecyclerView clickRecyclerView;
+    private float delay = 0;
 
     public DaysAdapter(List<DaysModel> list, OnClickDaysRecyclerView clickRecyclerView) {
         this.list = list;
@@ -31,6 +35,9 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull DaysAdapter.ViewHolder holder, int position) {
         holder.date.setText(list.get(position).getDate());
+        Common.AnimationOnStart(holder.cardView, (float) (delay));
+
+        delay += 0.1;
     }
 
     @Override
@@ -43,11 +50,12 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.ViewHolder> {
 
         TextView date;
         OnClickDaysRecyclerView onClickRecyclerView;
+        CardView cardView;
 
         public ViewHolder(@NonNull View itemView, OnClickDaysRecyclerView onClickRecyclerView) {
             super(itemView);
             date = itemView.findViewById(R.id.txtDate);
-
+            cardView = itemView.findViewById(R.id.cardViewDays);
             this.onClickRecyclerView = onClickRecyclerView;
             itemView.setOnClickListener(this::onClick);
         }
@@ -57,5 +65,6 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.ViewHolder> {
             onClickRecyclerView.onclick(getAdapterPosition());
         }
     }
+
 
 }

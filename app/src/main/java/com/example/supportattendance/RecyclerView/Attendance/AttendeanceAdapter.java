@@ -1,5 +1,6 @@
 package com.example.supportattendance.RecyclerView.Attendance;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,8 +9,10 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.supportattendance.Common;
 import com.example.supportattendance.R;
 
 import java.util.List;
@@ -17,6 +20,7 @@ import java.util.List;
 public class AttendeanceAdapter extends RecyclerView.Adapter<AttendeanceAdapter.ViewHolder> {
     private List<AttendanceModel> list;
     private Context context;
+    private float delay = 0;
 
     public AttendeanceAdapter(List<AttendanceModel> list, Context context) {
         this.list = list;
@@ -33,6 +37,8 @@ public class AttendeanceAdapter extends RecyclerView.Adapter<AttendeanceAdapter.
     @Override
     public void onBindViewHolder(@NonNull AttendeanceAdapter.ViewHolder holder, int position) {
         holder.name.setText(list.get(position).getName());
+        Common.AnimationOnStart(holder.cardView, (float) (delay));
+        delay += 0.1;
     }
 
     @Override
@@ -44,12 +50,14 @@ public class AttendeanceAdapter extends RecyclerView.Adapter<AttendeanceAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView name;
         CheckBox checkBox;
+        CardView cardView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.txtName);
             checkBox = itemView.findViewById(R.id.checkBox);
             checkBox.setVisibility(View.GONE);
+            cardView = itemView.findViewById(R.id.cardViewAttendance);
         }
     }
 

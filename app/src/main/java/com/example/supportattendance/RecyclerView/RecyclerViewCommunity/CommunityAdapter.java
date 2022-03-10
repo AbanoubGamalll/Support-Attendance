@@ -1,5 +1,6 @@
 package com.example.supportattendance.RecyclerView.RecyclerViewCommunity;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.supportattendance.Common;
 import com.example.supportattendance.Pages.Days;
 import com.example.supportattendance.R;
 
@@ -20,6 +22,7 @@ import java.util.List;
 public class CommunityAdapter extends RecyclerView.Adapter<CommunityAdapter.ViewHolder> {
     private List<CommunityModel> list;
     private Context context;
+    private float delay = 0;
 
     public CommunityAdapter(List<CommunityModel> list, Context context) {
         this.list = list;
@@ -46,6 +49,8 @@ public class CommunityAdapter extends RecyclerView.Adapter<CommunityAdapter.View
                 context.startActivity(intent);
             }
         });
+        Common.AnimationOnStart(holder.cardView, (float) (delay));
+        delay += 0.1;
     }
 
     @Override
@@ -70,5 +75,6 @@ public class CommunityAdapter extends RecyclerView.Adapter<CommunityAdapter.View
 
 
     }
+
 
 }
