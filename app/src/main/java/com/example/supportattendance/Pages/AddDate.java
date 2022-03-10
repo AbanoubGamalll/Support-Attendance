@@ -61,4 +61,9 @@ public class AddDate extends AppCompatActivity implements OnClickNamesRecyclerVi
         Intent intent = new Intent(this, Community.class);
         startActivity(intent);
     }
+
+    @Override
+    public void onBackPressed() {
+        Done(null);
+    }
 }

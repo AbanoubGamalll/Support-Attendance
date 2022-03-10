@@ -145,4 +145,9 @@ public class Days extends AppCompatActivity implements OnClickDaysRecyclerView {
         alertDialog.show();
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, Community.class);
+        startActivity(intent);
+    }
 }
