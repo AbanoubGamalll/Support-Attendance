@@ -101,16 +101,16 @@ public class Days extends AppCompatActivity implements OnClickDaysRecyclerView {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.Add_Name:
-                AddOrDeleteName(0);
+                AddOrDeleteName("Save");
                 break;
             case R.id.Delete_Name:
-                AddOrDeleteName(1);
+                AddOrDeleteName("Delete");
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void AddOrDeleteName(int val) {
+    private void AddOrDeleteName(String txt) {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
         alertDialog.setMessage("Enter Name");
         EditText input = new EditText(this);
@@ -119,26 +119,20 @@ public class Days extends AppCompatActivity implements OnClickDaysRecyclerView {
                 LinearLayout.LayoutParams.MATCH_PARENT);
         input.setLayoutParams(lp);
         alertDialog.setView(input);
-        String s = "null";
-        if (val == 0) {
-            s = "Save";
-        } else if (val == 1) {
-            s = "Delete";
-        }
-        alertDialog.setPositiveButton(s,
+        alertDialog.setPositiveButton(txt,
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         if (!input.getText().toString().equals("")) {
                             try {
-                                if (val == 0) {
+                                if (txt.equals("Save")) {
                                     Ndb.namesDOA().InsertName(new NamesModel(input.getText().toString(), comm));
-                                } else if (val == 1) {
+                                } else if (txt.equals("Delete")) {
                                     Ndb.namesDOA().DeleteName(new NamesModel(input.getText().toString(), comm));
                                 }
                             } catch (Exception e) {
                                 Toast.makeText(Days.this, "Name Already Exist", Toast.LENGTH_SHORT).show();
                             }
-                            AddOrDeleteName(val);
+                            AddOrDeleteName(txt);
                         } else {
                             Toast.makeText(Days.this, "Add Name!", Toast.LENGTH_SHORT).show();
                         }
