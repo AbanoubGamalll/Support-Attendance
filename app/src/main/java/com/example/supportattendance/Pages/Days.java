@@ -76,6 +76,7 @@ public class Days extends AppCompatActivity implements OnClickDaysRecyclerView {
             intent.putExtra("day", list.get(list.size() - 1).getDate());
             adapter.notifyDataSetChanged();
             startActivity(intent);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         } catch (Exception e) {
             Toast.makeText(this, "You Can't Add Same Session Twice!", Toast.LENGTH_SHORT).show();
         }
@@ -88,6 +89,7 @@ public class Days extends AppCompatActivity implements OnClickDaysRecyclerView {
         intent.putExtra("comm", comm);
         intent.putExtra("day", list.get(position).getDate());
         startActivity(intent);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 
     }
 
@@ -146,5 +148,9 @@ public class Days extends AppCompatActivity implements OnClickDaysRecyclerView {
         alertDialog.show();
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
 }

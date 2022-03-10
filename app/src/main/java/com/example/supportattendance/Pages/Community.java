@@ -1,5 +1,6 @@
 package com.example.supportattendance.Pages;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -71,11 +73,20 @@ public class Community extends AppCompatActivity {
         ad1.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface arg0, int arg1) {
-                finish();
+                Toast.makeText(Community.this, "See You Again!", Toast.LENGTH_SHORT).show();
+                finishAffinity();
             }
         });
         AlertDialog alert = ad1.create();
         alert.show();
     }
+
+
+    @Override
+    protected void onPause() {
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        super.onPause();
+    }
+
 
 }
