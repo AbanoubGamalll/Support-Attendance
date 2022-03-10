@@ -23,6 +23,7 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
                 Intent intent = new Intent(SplashScreen.this, Community.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.push_down_in, R.anim.push_down_out );
                 finish();
             }
         }, 2500);
