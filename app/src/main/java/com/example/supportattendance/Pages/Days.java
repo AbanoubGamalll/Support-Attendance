@@ -128,14 +128,18 @@ public class Days extends AppCompatActivity implements OnClickDaysRecyclerView {
         alertDialog.setPositiveButton(s,
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        try {
-                            if (val == 0) {
-                                Ndb.namesDOA().InsertName(new NamesModel(input.getText().toString(), comm));
-                            } else if (val == 1) {
-                                Ndb.namesDOA().DeleteName(new NamesModel(input.getText().toString(), comm));
+                        if (!input.getText().toString().equals("")) {
+                            try {
+                                if (val == 0) {
+                                    Ndb.namesDOA().InsertName(new NamesModel(input.getText().toString(), comm));
+                                } else if (val == 1) {
+                                    Ndb.namesDOA().DeleteName(new NamesModel(input.getText().toString(), comm));
+                                }
+                            } catch (Exception e) {
+                                Toast.makeText(Days.this, "Name Already Exist", Toast.LENGTH_SHORT).show();
                             }
-                        } catch (Exception e) {
-                            Toast.makeText(Days.this, "Name Already Exist", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(Days.this, "Add Name!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
