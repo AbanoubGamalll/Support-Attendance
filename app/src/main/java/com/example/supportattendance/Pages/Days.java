@@ -48,7 +48,6 @@ public class Days extends AppCompatActivity implements OnClickDaysRecyclerView {
 
         comm = getIntent().getExtras().getString("clicked");
 
-
         ///////////////// room
         db = Room.databaseBuilder(getApplicationContext(), DaysDatabase.class, "Days").allowMainThreadQueries().build();
         Ndb = Room.databaseBuilder(getApplicationContext(), NamesDatabase.class, "Names").allowMainThreadQueries().build();
@@ -103,40 +102,42 @@ public class Days extends AppCompatActivity implements OnClickDaysRecyclerView {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.Add_Name:
-                AddOrDeleteName("Save");
+                AddName();
                 break;
-            case R.id.Delete_Name:
-                AddOrDeleteName("Delete");
+            case R.id.SHOW_ALL:
+                ShowAllName();
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void AddOrDeleteName(String txt) {
+    private void ShowAllName() {
+        Intent intent = new Intent(this, Show_All_Name.class);
+        intent.putExtra("comm", comm);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
+
+    private void AddName() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-        alertDialog.setMessage("Enter Name");
+        alertDialog.setMessage("Enter Name: ");
         EditText input = new EditText(this);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
         input.setLayoutParams(lp);
         alertDialog.setView(input);
-        alertDialog.setPositiveButton(txt,
+        alertDialog.setPositiveButton("Save",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         if (!input.getText().toString().equals("")) {
                             try {
-                                if (txt.equals("Save")) {
-                                    Ndb.namesDOA().InsertName(new NamesModel(input.getText().toString(), comm));
-                                } else if (txt.equals("Delete")) {
-                                    Ndb.namesDOA().DeleteName(new NamesModel(input.getText().toString(), comm));
-                                }
+                                Ndb.namesDOA().InsertName(new NamesModel(input.getText().toString(), comm));
                             } catch (Exception e) {
                                 Toast.makeText(Days.this, "Name Already Exist", Toast.LENGTH_SHORT).show();
                             }
-
                         } else {
                             Toast.makeText(Days.this, "Add Name!", Toast.LENGTH_SHORT).show();
                         }
-                        AddOrDeleteName(txt);
+                        AddName();
                     }
                 });
         alertDialog.setNegativeButton("Cancel",

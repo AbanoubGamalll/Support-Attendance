@@ -4,7 +4,6 @@
         android:id="@+id/Add_Name"
         android:title="Add Name" />
     <item
-        android:id="@+id/Delete_Name"
-        android:title="Delete Name" />
-
+        android:id="@+id/SHOW_ALL"
+        android:title="Show All Name" />
 </menu>

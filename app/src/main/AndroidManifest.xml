@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SupportAttendance">
         <activity
+            android:name=".Pages.Show_All_Name"
+            android:exported="false" />
+        <activity
             android:name=".Pages.AddDate"
             android:exported="false"
             android:label="Add New Session" />

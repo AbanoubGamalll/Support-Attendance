@@ -58,7 +58,7 @@ public class NamesAdapter extends RecyclerView.Adapter<NamesAdapter.ViewHolder> 
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder  {
         TextView name;
         CheckBox ch_Attendee;
         CheckBox ch_task;
@@ -68,15 +68,10 @@ public class NamesAdapter extends RecyclerView.Adapter<NamesAdapter.ViewHolder> 
         public ViewHolder(@NonNull View itemView, OnClickNamesRecyclerView onClickRecyclerView) {
             super(itemView);
             name = itemView.findViewById(R.id.txtName);
-            ch_Attendee = itemView.findViewById(R.id.ch_Attendee);
-            ch_task = itemView.findViewById(R.id.ch_task);
+            ch_Attendee = itemView.findViewById(R.id.Edit);
+            ch_task = itemView.findViewById(R.id.Delete);
             cardView = itemView.findViewById(R.id.cardViewAttendance);
             this.onClickRecyclerView = onClickRecyclerView;
-        }
-
-        @Override
-        public void onClick(View view) {
-            onClickRecyclerView.onclick(getAdapterPosition(), ch_Attendee.isChecked(), ch_task.isChecked());
         }
     }
 

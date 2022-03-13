@@ -61,9 +61,9 @@ public class AttendeanceAdapter extends RecyclerView.Adapter<AttendeanceAdapter.
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.txtName);
-            ch_Attendee = itemView.findViewById(R.id.ch_Attendee);
+            ch_Attendee = itemView.findViewById(R.id.Edit);
             ch_Attendee.setClickable(false);
-            ch_task = itemView.findViewById(R.id.ch_task);
+            ch_task = itemView.findViewById(R.id.Delete);
             ch_task.setClickable(false);
             txt_attendee = itemView.findViewById(R.id.txt_attendee);
             txt_task = itemView.findViewById(R.id.txt_task);

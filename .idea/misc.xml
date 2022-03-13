@@ -10,12 +10,14 @@
         <entry key="..\:/ALLProject/Android/SupportAttendance/app/src/main/res/layout/activity_community.xml" value="0.21052631578947367" />
         <entry key="..\:/ALLProject/Android/SupportAttendance/app/src/main/res/layout/activity_days.xml" value="0.19331453886427707" />
         <entry key="..\:/ALLProject/Android/SupportAttendance/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/ALLProject/Android/SupportAttendance/app/src/main/res/layout/activity_show_all_name.xml" value="0.20521590423257802" />
         <entry key="..\:/ALLProject/Android/SupportAttendance/app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
         <entry key="..\:/ALLProject/Android/SupportAttendance/app/src/main/res/layout/attendenance_model.xml" value="0.20521590423257802" />
         <entry key="..\:/ALLProject/Android/SupportAttendance/app/src/main/res/layout/communitymodel.xml" value="0.264" />
         <entry key="..\:/ALLProject/Android/SupportAttendance/app/src/main/res/layout/daysmodel.xml" value="0.264" />
         <entry key="..\:/ALLProject/Android/SupportAttendance/app/src/main/res/layout/name_model.xml" value="0.536" />
         <entry key="..\:/ALLProject/Android/SupportAttendance/app/src/main/res/layout/namesmodel.xml" value="0.6" />
+        <entry key="..\:/ALLProject/Android/SupportAttendance/app/src/main/res/layout/shownamesmodel.xml" value="0.20521590423257802" />
         <entry key="..\:/ALLProject/Android/SupportAttendance/app/src/main/res/menu/menu_name.xml" value="0.20521590423257802" />
       </map>
     </option>

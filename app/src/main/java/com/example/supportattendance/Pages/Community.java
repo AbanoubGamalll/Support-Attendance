@@ -23,7 +23,6 @@ import java.util.List;
 
 public class Community extends AppCompatActivity {
 
-
     RecyclerView recyclerView;
     CommunityAdapter adapter;
     List<CommunityModel> list = new ArrayList<>();
@@ -81,12 +80,10 @@ public class Community extends AppCompatActivity {
         alert.show();
     }
 
-
     @Override
     protected void onPause() {
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         super.onPause();
     }
-
 
 }
