@@ -1,7 +1,5 @@
 package com.example.supportattendance.RecyclerView.RecyclerViewNames;
 
-import android.animation.ObjectAnimator;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.supportattendance.Common;
 import com.example.supportattendance.R;
 import com.example.supportattendance.RecyclerView.Attendance.OnClickNamesRecyclerView;
-import com.example.supportattendance.RecyclerView.RecyclerViewDays.OnClickDaysRecyclerView;
 
 import java.util.List;
 
@@ -39,14 +36,19 @@ public class NamesAdapter extends RecyclerView.Adapter<NamesAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull NamesAdapter.ViewHolder holder, int position) {
         holder.name.setText(list.get(position).getName());
-        holder.checkBox.setVisibility(View.VISIBLE);
-        holder.checkBox.setOnClickListener(new View.OnClickListener() {
+        holder.ch_Attendee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                holder.onClickRecyclerView.onclick(holder.getAdapterPosition(), holder.checkBox.isChecked());
+                holder.onClickRecyclerView.onclick(holder.getAdapterPosition(), holder.ch_Attendee.isChecked(), holder.ch_task.isChecked());
             }
         });
-        Common.AnimationOnStart(holder.cardView, (float) (delay));
+        holder.ch_task.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                holder.onClickRecyclerView.onclick(holder.getAdapterPosition(), holder.ch_Attendee.isChecked(), holder.ch_task.isChecked());
+            }
+        });
+        Common.AnimationOnStart(holder.cardView, delay);
         delay += 0.1;
     }
 
@@ -58,23 +60,23 @@ public class NamesAdapter extends RecyclerView.Adapter<NamesAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView name;
-        CheckBox checkBox;
+        CheckBox ch_Attendee;
+        CheckBox ch_task;
         CardView cardView;
         OnClickNamesRecyclerView onClickRecyclerView;
 
         public ViewHolder(@NonNull View itemView, OnClickNamesRecyclerView onClickRecyclerView) {
             super(itemView);
             name = itemView.findViewById(R.id.txtName);
-            checkBox = itemView.findViewById(R.id.checkBox);
+            ch_Attendee = itemView.findViewById(R.id.ch_Attendee);
+            ch_task = itemView.findViewById(R.id.ch_task);
             cardView = itemView.findViewById(R.id.cardViewAttendance);
-
             this.onClickRecyclerView = onClickRecyclerView;
-
         }
 
         @Override
         public void onClick(View view) {
-            onClickRecyclerView.onclick(getAdapterPosition(), checkBox.isChecked());
+            onClickRecyclerView.onclick(getAdapterPosition(), ch_Attendee.isChecked(), ch_task.isChecked());
         }
     }
 

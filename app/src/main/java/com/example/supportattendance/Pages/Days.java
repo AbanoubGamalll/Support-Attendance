@@ -90,7 +90,6 @@ public class Days extends AppCompatActivity implements OnClickDaysRecyclerView {
         intent.putExtra("day", list.get(position).getDate());
         startActivity(intent);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-
     }
 
     @Override

@@ -11,18 +11,36 @@ public class AttendanceModel {
     private String name;
     @NonNull
     private String Date;
+    private Boolean Task;
+    private Boolean Attendee;
     private String community;
 
     public AttendanceModel() {
     }
 
-    public AttendanceModel(String name, String date, String community) {
+    public AttendanceModel(@NonNull String name, @NonNull String date, String community, Boolean attendee, Boolean task) {
         this.name = name;
         Date = date;
+        Task = task;
+        Attendee = attendee;
         this.community = community;
     }
 
+    public Boolean getAttendee() {
+        return Attendee;
+    }
 
+    public void setAttendee(Boolean attendee) {
+        Attendee = attendee;
+    }
+
+    public Boolean getTask() {
+        return Task;
+    }
+
+    public void setTask(Boolean task) {
+        Task = task;
+    }
 
     public String getName() {
         return name;

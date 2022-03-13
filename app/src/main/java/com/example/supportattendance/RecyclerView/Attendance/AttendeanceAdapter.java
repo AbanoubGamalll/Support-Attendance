@@ -1,6 +1,5 @@
 package com.example.supportattendance.RecyclerView.Attendance;
 
-import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,6 +36,10 @@ public class AttendeanceAdapter extends RecyclerView.Adapter<AttendeanceAdapter.
     @Override
     public void onBindViewHolder(@NonNull AttendeanceAdapter.ViewHolder holder, int position) {
         holder.name.setText(list.get(position).getName());
+
+        holder.ch_Attendee.setChecked(list.get(position).getAttendee());
+        holder.ch_task.setChecked(list.get(position).getTask());
+
         Common.AnimationOnStart(holder.cardView, (float) (delay));
         delay += 0.1;
     }
@@ -49,14 +52,21 @@ public class AttendeanceAdapter extends RecyclerView.Adapter<AttendeanceAdapter.
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView name;
-        CheckBox checkBox;
+        TextView txt_task;
+        TextView txt_attendee;
+        CheckBox ch_Attendee;
+        CheckBox ch_task;
         CardView cardView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.txtName);
-            checkBox = itemView.findViewById(R.id.checkBox);
-            checkBox.setVisibility(View.GONE);
+            ch_Attendee = itemView.findViewById(R.id.ch_Attendee);
+            ch_Attendee.setClickable(false);
+            ch_task = itemView.findViewById(R.id.ch_task);
+            ch_task.setClickable(false);
+            txt_attendee = itemView.findViewById(R.id.txt_attendee);
+            txt_task = itemView.findViewById(R.id.txt_task);
             cardView = itemView.findViewById(R.id.cardViewAttendance);
         }
     }

@@ -35,8 +35,7 @@ public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull DaysAdapter.ViewHolder holder, int position) {
         holder.date.setText(list.get(position).getDate());
-        Common.AnimationOnStart(holder.cardView, (float) (delay));
-
+        Common.AnimationOnStart(holder.cardView, delay);
         delay += 0.1;
     }
 

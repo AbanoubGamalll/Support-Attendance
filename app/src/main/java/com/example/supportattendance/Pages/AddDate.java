@@ -7,7 +7,9 @@ import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.supportattendance.R;
 import com.example.supportattendance.RecyclerView.Attendance.AttendanceModel;
@@ -49,11 +51,14 @@ public class AddDate extends AppCompatActivity implements OnClickNamesRecyclerVi
     }
 
     @Override
-    public void onclick(int position, Boolean check) {
-        if (check) {
-            Adb.attendanceDOA().InsertAttendance(new AttendanceModel(list.get(position).getName(), day, comm));
-        } else {
-            Adb.attendanceDOA().DeleteAttendance(list.get(position).getName(), day, comm);
+    public void onclick(int position, Boolean Attendee, Boolean Task) {
+        try {
+            Adb.attendanceDOA().InsertAttendance(new AttendanceModel(list.get(position).getName(), day, comm, Attendee, Task));
+        } catch (Exception e) {
+            Adb.attendanceDOA().UpdateDate(new AttendanceModel(list.get(position).getName(), day, comm, Attendee, Task));
+        }
+        if (!Attendee && !Task) {
+            Adb.attendanceDOA().DeleteAttendance(new AttendanceModel(list.get(position).getName(), day, comm, Attendee, Task));
         }
     }
 
@@ -62,7 +67,7 @@ public class AddDate extends AppCompatActivity implements OnClickNamesRecyclerVi
         startActivity(intent);
         finish();
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-
+        Toast.makeText(this, "Session is saved", Toast.LENGTH_SHORT).show();
     }
 
     @Override
