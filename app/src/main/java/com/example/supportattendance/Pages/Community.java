@@ -8,14 +8,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.supportattendance.R;
 import com.example.supportattendance.RecyclerView.RecyclerViewCommunity.CommunityAdapter;
 import com.example.supportattendance.RecyclerView.RecyclerViewCommunity.CommunityModel;
-import com.example.supportattendance.RecyclerView.RecyclerViewDays.Room.DaysDOA;
 import com.example.supportattendance.RecyclerView.RecyclerViewDays.Room.DaysDatabase;
 
 import java.util.ArrayList;
@@ -41,7 +45,7 @@ public class Community extends AppCompatActivity {
         list.add(new CommunityModel("Network", db.DaysDOA().NumOfSessions("Network"), R.drawable.android_logo));
         list.add(new CommunityModel("Cyber Security", db.DaysDOA().NumOfSessions("Cyber Security"), R.drawable.android_logo));
         list.add(new CommunityModel("HR", db.DaysDOA().NumOfSessions("HR"), R.drawable.android_logo));
-        list.add(new CommunityModel("BR", db.DaysDOA().NumOfSessions("BR"), R.drawable.android_logo));
+        list.add(new CommunityModel("PR", db.DaysDOA().NumOfSessions("BR"), R.drawable.android_logo));
         list.add(new CommunityModel("Software Testing", db.DaysDOA().NumOfSessions("Software Testing"), R.drawable.android_logo));
         list.add(new CommunityModel("Web", db.DaysDOA().NumOfSessions("Web"), R.drawable.android_logo));
 
@@ -85,5 +89,69 @@ public class Community extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         super.onPause();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_firebase, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.download:
+                connect(0);
+                break;
+            case R.id.upload:
+                connect(1);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void firebaseUpload() {
+        Toast.makeText(this, "U", Toast.LENGTH_SHORT).show();
+    }
+
+    private void firebaseDownload() {
+        Toast.makeText(this, "D", Toast.LENGTH_SHORT).show();
+    }
+
+    private void connect(int n) {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+        alertDialog.setMessage("Enter Password to Connect: ");
+        EditText input = new EditText(this);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+        input.setLayoutParams(lp);
+        alertDialog.setView(input);
+        alertDialog.setPositiveButton("Ok",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (!input.getText().toString().equals("")) {
+                            if (input.getText().toString().equals("0")) {
+                                Toast.makeText(Community.this, "Password Correct", Toast.LENGTH_SHORT).show();
+                                if (n == 0) {
+                                    firebaseDownload();
+                                } else if (n == 1) {
+                                    firebaseUpload();
+                                }
+                            } else {
+                                Toast.makeText(Community.this, "Password Not Correct", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(Community.this, "Password is empty", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+        alertDialog.setNegativeButton("Cancel",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        alertDialog.show();
+    }
+
 
 }
