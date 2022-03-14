@@ -45,7 +45,7 @@ public class Community extends AppCompatActivity {
         list.add(new CommunityModel("Network", db.DaysDOA().NumOfSessions("Network"), R.drawable.android_logo));
         list.add(new CommunityModel("Cyber Security", db.DaysDOA().NumOfSessions("Cyber Security"), R.drawable.android_logo));
         list.add(new CommunityModel("HR", db.DaysDOA().NumOfSessions("HR"), R.drawable.android_logo));
-        list.add(new CommunityModel("PR", db.DaysDOA().NumOfSessions("BR"), R.drawable.android_logo));
+        list.add(new CommunityModel("PR", db.DaysDOA().NumOfSessions("PR"), R.drawable.android_logo));
         list.add(new CommunityModel("Software Testing", db.DaysDOA().NumOfSessions("Software Testing"), R.drawable.android_logo));
         list.add(new CommunityModel("Web", db.DaysDOA().NumOfSessions("Web"), R.drawable.android_logo));
 
@@ -70,7 +70,6 @@ public class Community extends AppCompatActivity {
         ad1.setNegativeButton("NO", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface arg0, int arg1) {
-
             }
         });
         ad1.setPositiveButton("YES", new DialogInterface.OnClickListener() {

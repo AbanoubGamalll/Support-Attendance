@@ -52,7 +52,10 @@ public class Days extends AppCompatActivity implements OnClickDaysRecyclerView {
         db = Room.databaseBuilder(getApplicationContext(), DaysDatabase.class, "Days").allowMainThreadQueries().build();
         Ndb = Room.databaseBuilder(getApplicationContext(), NamesDatabase.class, "Names").allowMainThreadQueries().build();
 
-        // db.DaysDOA().DeleteAll();
+        Ndb.namesDOA().DeleteAll();
+        for (int i = 0; i < 50; i++) {
+            Ndb.namesDOA().InsertName(new NamesModel("" + comm + " " + i, comm));
+        }
 
         ////////
 
