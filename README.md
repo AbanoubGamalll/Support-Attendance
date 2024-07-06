@@ -2,6 +2,8 @@
 
 > ### Developed an app for tracking attendance and session days, with both offline and online data storage capabilities. The app allows HR personnel to access the data via an Admin account.
 <br>
+> ### Using manual and automation testing to enhance the app and discover any bugs.
+
 1) Nice Splash Screen
 
 <img src="https://user-images.githubusercontent.com/63438088/159057318-63c90a20-be85-477f-89b2-fe9c6261882b.jpg" width="250" height="500">
