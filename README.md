@@ -1,8 +1,10 @@
 # Support Attendance
 
-> ### Developed an app for tracking attendance and session days, with both offline and online data storage capabilities. The app allows HR personnel to access the data via an Admin account.
-<br>
+> ### Developed an app for tracking attendance and session days, with both offline and online data storage capabilities. The app allows HR personnel to access the data via an Admin account.<br>
+
 > ### Using manual and automation testing to enhance the app and discover any bugs.
+
+<br>
 
 1) Nice Splash Screen
 
